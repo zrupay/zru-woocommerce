@@ -25,6 +25,8 @@ if (!class_exists('ZRU_WOO_Gateway')) {
 		 */
 		protected static $instance = null;
 
+        public $icon;
+
 		/**
 		 * Class constructor. Called when an object of this class is instantiated.
 		 *
