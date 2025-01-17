@@ -280,24 +280,63 @@ if (!class_exists('ZRU_WOO_Gateway')) {
          * @return array
          */
         public function process_regular_payment( $zru, $order, $language, $order_id ) {
-
-			$country = '';
-			$email = '';
             $first_name = '';
             $last_name = '';
+            $email = '';
             $postal_code = '';
-			if ( version_compare( WOOCOMMERCE_VERSION, '3.0', '<' ) ) {
-                $country = $order->billing_country;
-                $email = $order->billing_email;
+            $country = '';
+            $city = '';
+            $line1 = '';
+            $line2 = '';
+            $line3 = '';
+            $state = '';
+            $phone = '';
+            $ship_city = '';
+            $ship_country = '';
+            $ship_line1 = '';
+            $ship_line2 = '';
+            $ship_line3 = '';
+            $ship_postal_code = '';
+            $ship_state = '';
+            $user_id = '';
+			if ( version_compare( WOOCOMMERCE_VERSION, '3.0', '<' ) ) {                
                 $first_name = $order->billing_first_name;
                 $last_name = $order->billing_last_name;
+                $this->check_fill_first_last_name($first_name, $last_name);
+                $email = $order->billing_email;
                 $postal_code = $order->billing_postcode;
+                $country = $order->billing_country;
+                $city = $order->billing_city;
+                $line1 = $order->billing_address_1;
+                $line2 = $order->billing_address_2;
+                $state = $order->billing_state;
+                $phone = $order->billing_phone;
+                $ship_city = $order->shipping_city;
+                $ship_country = $order->shipping_country;
+                $ship_line1 = $order->shipping_address_1;
+                $ship_line2 = $order->shipping_address_2;
+                $ship_postal_code = $order->shipping_postcode;
+                $ship_state = $order->shipping_state;
+                $user_id = $order->user_id;
             } else {
-                $country = $order->get_billing_country();
-				$email = $order->get_billing_email();
                 $first_name = $order->get_billing_first_name();
                 $last_name = $order->get_billing_last_name();
+                $this->check_fill_first_last_name($first_name, $last_name);
+                $email = $order->get_billing_email();
                 $postal_code = $order->get_billing_postcode();
+                $country = $order->get_billing_country();
+                $city = $order->get_billing_city();
+                $line1 = $order->get_billing_address_1();
+                $line2 = $order->get_billing_address_2();
+                $state = $order->get_billing_state();
+                $phone = $order->get_billing_phone();
+                $ship_city = $order->get_shipping_city();
+                $ship_country = $order->get_shipping_country();
+                $ship_line1 = $order->get_shipping_address_1();
+                $ship_line2 = $order->get_shipping_address_2();
+                $ship_postal_code = $order->get_shipping_postcode();
+                $ship_state = $order->get_shipping_state();
+                $user_id = $order->get_user_id();
             }
 
             // Create transaction
@@ -319,11 +358,22 @@ if (!class_exists('ZRU_WOO_Gateway')) {
                         )
                     ),
 					"extra" => array(
-						"email" => $email,
-						"country" => $country,
 						"first_name" => $first_name,
 						"last_name" => $last_name,
+						"email" => $email,
+                        "phone_number" => $phone,
+						"country" => $country,
+                        "billing_street_name" => $line1.' '.$line2.' '.$line3,
                         "billing_postal_code" => $postal_code,
+                        "billing_country_code" => $country,
+                        "billing_city" => $city,
+                        "billing_province" => $state,
+                        "shipping_street_name" => $ship_line1.' '.$ship_line2.' '.$ship_line3,
+                        "shipping_postal_code" => $ship_postal_code,
+                        "shipping_country_code" => $ship_country,
+                        "shipping_city" => $ship_city,
+                        "shipping_province" => $ship_state,
+                        "user_id" => $user_id,
                         "zru_lib" => array(
                             "name" => "woocommerce",
                             "version" => "1.0.0"
@@ -345,24 +395,63 @@ if (!class_exists('ZRU_WOO_Gateway')) {
          * @return array
          */
         public function process_subscription_payment( $zru, $order, $language, $order_id ) {
-
-            $country = '';
-			$email = '';
             $first_name = '';
             $last_name = '';
+            $email = '';
             $postal_code = '';
-			if ( version_compare( WOOCOMMERCE_VERSION, '3.0', '<' ) ) {
-                $country = $order->billing_country;
-                $email = $order->billing_email;
+            $country = '';
+            $city = '';
+            $line1 = '';
+            $line2 = '';
+            $line3 = '';
+            $state = '';
+            $phone = '';
+            $ship_city = '';
+            $ship_country = '';
+            $ship_line1 = '';
+            $ship_line2 = '';
+            $ship_line3 = '';
+            $ship_postal_code = '';
+            $ship_state = '';
+            $user_id = '';
+			if ( version_compare( WOOCOMMERCE_VERSION, '3.0', '<' ) ) {                
                 $first_name = $order->billing_first_name;
                 $last_name = $order->billing_last_name;
+                $this->check_fill_first_last_name($first_name, $last_name);
+                $email = $order->billing_email;
                 $postal_code = $order->billing_postcode;
+                $country = $order->billing_country;
+                $city = $order->billing_city;
+                $line1 = $order->billing_address_1;
+                $line2 = $order->billing_address_2;
+                $state = $order->billing_state;
+                $phone = $order->billing_phone;
+                $ship_city = $order->shipping_city;
+                $ship_country = $order->shipping_country;
+                $ship_line1 = $order->shipping_address_1;
+                $ship_line2 = $order->shipping_address_2;
+                $ship_postal_code = $order->shipping_postcode;
+                $ship_state = $order->shipping_state;
+                $user_id = $order->user_id;
             } else {
-                $country = $order->get_billing_country();
-				$email = $order->get_billing_email();
                 $first_name = $order->get_billing_first_name();
                 $last_name = $order->get_billing_last_name();
+                $this->check_fill_first_last_name($first_name, $last_name);
+                $email = $order->get_billing_email();
                 $postal_code = $order->get_billing_postcode();
+                $country = $order->get_billing_country();
+                $city = $order->get_billing_city();
+                $line1 = $order->get_billing_address_1();
+                $line2 = $order->get_billing_address_2();
+                $state = $order->get_billing_state();
+                $phone = $order->get_billing_phone();
+                $ship_city = $order->get_shipping_city();
+                $ship_country = $order->get_shipping_country();
+                $ship_line1 = $order->get_shipping_address_1();
+                $ship_line2 = $order->get_shipping_address_2();
+                $ship_postal_code = $order->get_shipping_postcode();
+                $ship_state = $order->get_shipping_state();
+                $user_id = $order->get_user_id();
             }
 
             $unconverted_periods = array(
@@ -410,11 +499,22 @@ if (!class_exists('ZRU_WOO_Gateway')) {
                         "recurring" => True
                     ),
 					"extra" => array(
-						"email" => $email,
-						"country" => $country,
 						"first_name" => $first_name,
 						"last_name" => $last_name,
+						"email" => $email,
+                        "phone_number" => $phone,
+						"country" => $country,
+                        "billing_street_name" => $line1.' '.$line2.' '.$line3,
                         "billing_postal_code" => $postal_code,
+                        "billing_country_code" => $country,
+                        "billing_city" => $city,
+                        "billing_province" => $state,
+                        "shipping_street_name" => $ship_line1.' '.$ship_line2.' '.$ship_line3,
+                        "shipping_postal_code" => $ship_postal_code,
+                        "shipping_country_code" => $ship_country,
+                        "shipping_city" => $ship_city,
+                        "shipping_province" => $ship_state,
+                        "user_id" => $user_id,
                         "zru_lib" => array(
                             "name" => "woocommerce",
                             "version" => "1.0.0"
@@ -425,6 +525,20 @@ if (!class_exists('ZRU_WOO_Gateway')) {
             $subscription->save();
 
             return $subscription;
+        }
+
+        private function check_fill_first_last_name(&$first_name, &$last_name){
+            if(empty($last_name)){
+                $fn_parts = explode(' ', $first_name);
+                
+                if(count($fn_parts)>1){
+                    $first_name = array_shift($fn_parts);
+                    $last_name = implode(' ', $fn_parts);
+                }else{
+                    $first_name = $fn_parts[0];
+                    $last_name = $first_name;
+                }
+            }
         }
         
         /**
