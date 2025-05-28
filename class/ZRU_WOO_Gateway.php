@@ -376,7 +376,7 @@ if (!class_exists('ZRU_WOO_Gateway')) {
                         "user_id" => $user_id,
                         "zru_lib" => array(
                             "name" => "woocommerce",
-                            "version" => "1.0.2"
+                            "version" => "1.0.3"
                         )
 					)
                 )
@@ -517,7 +517,7 @@ if (!class_exists('ZRU_WOO_Gateway')) {
                         "user_id" => $user_id,
                         "zru_lib" => array(
                             "name" => "woocommerce",
-                            "version" => "1.0.2"
+                            "version" => "1.0.3"
                         )
 					)
                 )

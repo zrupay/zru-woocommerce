@@ -6,7 +6,7 @@
  * Author URI: https://www.zrupay.com/
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Version: 1.0.2
+ * Version: 1.0.3
  * Text Domain: zru-for-woocommerce
  *
  * Copyright: (c) 2024 ZRU
@@ -45,7 +45,7 @@ if (!class_exists('ZRU_WOO_Plugin')) {
 		 * @var		int					$version	A reference to the plugin version, which will match
 		 *											the value in the comments above.
 		 */
-		public static $version = '1.0.2';
+		public static $version = '1.0.3';
 
 		/**
 		 * Import required classes.
@@ -94,7 +94,6 @@ if (!class_exists('ZRU_WOO_Plugin')) {
 			 */
 			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array($this, 'filter_action_links'), 10, 1 );
 			add_filter( 'woocommerce_payment_gateways', array($gateway, 'add_zru_gateway'), 10, 1 );
-			add_filter( 'woocommerce_gateway_icon', $gateway->icon );
 			add_filter(
 				'__experimental_woocommerce_blocks_add_data_attributes_to_namespace',
 				function ( $allowed_namespaces ) {
