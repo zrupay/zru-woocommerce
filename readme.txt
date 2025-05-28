@@ -1,8 +1,8 @@
 === ZRU Gateway for WooCommerce ===
 Contributors: ZRU
 Tags: woocommerce, zru, payments, gateway, credit card
-Tested up to: 6.4.3
-Stable tag: 1.0.1
+Tested up to: 6.8.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/
 

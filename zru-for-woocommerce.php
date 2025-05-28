@@ -6,7 +6,7 @@
  * Author URI: https://www.zrupay.com/
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Version: 1.0.1
+ * Version: 1.0.2
  * Text Domain: zru-for-woocommerce
  *
  * Copyright: (c) 2024 ZRU
@@ -45,7 +45,7 @@ if (!class_exists('ZRU_WOO_Plugin')) {
 		 * @var		int					$version	A reference to the plugin version, which will match
 		 *											the value in the comments above.
 		 */
-		public static $version = '1.0.1';
+		public static $version = '1.0.2';
 
 		/**
 		 * Import required classes.
