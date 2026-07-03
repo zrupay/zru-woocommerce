@@ -262,7 +262,7 @@ if (!class_exists('ZRU_WOO_Gateway')) {
             }
 
             if ( $this->way == $this->WAY_IFRAME ) {
-				echo '<iframe allowpaymentrequest sandbox="allow-forms allow-popups allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation" src="'.esc_html( $obj->getIframeUrl() ).'" frameBorder="0" style="width: 100%; height: 700px"></iframe>';
+				echo '<iframe allow="payment *" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-popups-to-escape-sandbox" src="'.esc_html( $obj->getIframeUrl() ).'" frameBorder="0" style="width: 100%; height: 700px"></iframe>';
             } else {
 				return array(
 					'result' 	=> 'success',
@@ -376,7 +376,7 @@ if (!class_exists('ZRU_WOO_Gateway')) {
                         "user_id" => $user_id,
                         "zru_lib" => array(
                             "name" => "woocommerce",
-                            "version" => "1.0.3"
+                            "version" => "1.0.4"
                         )
 					)
                 )
@@ -517,7 +517,7 @@ if (!class_exists('ZRU_WOO_Gateway')) {
                         "user_id" => $user_id,
                         "zru_lib" => array(
                             "name" => "woocommerce",
-                            "version" => "1.0.3"
+                            "version" => "1.0.4"
                         )
 					)
                 )
